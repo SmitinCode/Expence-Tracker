@@ -25,4 +25,5 @@ Error Handling:
 Graphical User Interface:
 
 3.The application has a visually appealing graphical user interface (GUI) with labels, entry fields, buttons, and a treeview widget for displaying expenses.
+
 Overall, this application provides a user-friendly interface for tracking expenses, setting budgets, and analyzing spending patterns. Users can efficiently manage their finances with this tool.
