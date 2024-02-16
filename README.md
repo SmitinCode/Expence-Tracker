@@ -1,5 +1,5 @@
 
-The provided code is a Python GUI application built using the Tkinter library for tracking expenses. Here's a brief overview of its functionality:
+The Project is a Python GUI application built using the Tkinter library for tracking expenses. Here's a brief overview of its functionality:
 
 1.Expense Tracking Interface:
 Users can select a month and set a budget for that month.
