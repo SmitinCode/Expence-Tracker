@@ -5,7 +5,7 @@ helps me manage my spending more effectively?"
 Project :
 The provided code is a Python GUI application built using the Tkinter library for tracking expenses. Here's a brief overview of its functionality:
 
-                                                                           Expense Tracking Interface:
+ Expense Tracking Interface:
 
 Users can select a month and set a budget for that month.
 They can add expenses by entering item details such as name, quantity, cost per unit, and selecting a category.
