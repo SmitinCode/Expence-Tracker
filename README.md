@@ -16,13 +16,13 @@ Users can delete selected items from the expenses list.
 Users can analyze the expenses data for a selected month by viewing a pie chart showing the distribution of expenses across different categories.
 File Handling:
 
-      1.The expenses data is stored in a CSV file (expenses_aaa.csv).
-      If the file doesn't exist, it creates an empty DataFrame and saves it to the CSV file.
-      When expenses are added or deleted, the CSV file is updated accordingly.
-      Error Handling:
+1.The expenses data is stored in a CSV file (expenses_aaa.csv).
+If the file doesn't exist, it creates an empty DataFrame and saves it to the CSV file.
+When expenses are added or deleted, the CSV file is updated accordingly.
+Error Handling:
 
-      2.It handles errors such as invalid budget input and exceeding the budget when adding an item.
-      Graphical User Interface:
+2.It handles errors such as invalid budget input and exceeding the budget when adding an item.
+Graphical User Interface:
 
-      3.The application has a visually appealing graphical user interface (GUI) with labels, entry fields, buttons, and a treeview widget for displaying expenses.
+3.The application has a visually appealing graphical user interface (GUI) with labels, entry fields, buttons, and a treeview widget for displaying expenses.
 Overall, this application provides a user-friendly interface for tracking expenses, setting budgets, and analyzing spending patterns. Users can efficiently manage their finances with this tool.
