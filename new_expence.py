@@ -43,8 +43,23 @@ def add_item():
     expenses_data.to_csv(expenses_filename, index=False)  # Save data to CSV
 
     # Dynamically adjust the height of the Treeview widget
-    new_height = min(len(expenses_data), 5)  # Set maximum height to 15 rows
+    new_height = min(len(expenses_data), 15)  # Set maximum height to 15 rows
     esp_lbl.configure(height=new_height)
+
+
+def add_vertical_scrollbar(treeview):
+    # Create a vertical scrollbar
+    scrollbar = ttk.Scrollbar(right_frame, orient="vertical", command=treeview.yview)
+    
+    # Configure the Treeview widget to use the scrollbar
+    treeview.configure(yscrollcommand=scrollbar.set)
+
+    # Pack the scrollbar inside the same frame as the Treeview widget
+    scrollbar.pack(side="right", fill="y", expand=False)
+
+
+
+
 
 
 def total_expenses(month):
@@ -58,19 +73,28 @@ def set_budget():
         messagebox.showinfo("Budget Set", f"Budget set to ${budget} for {selected_month}.")
     except ValueError:
         messagebox.showerror("Invalid Budget", "Please enter a valid budget.")
-
 def update_budget(event):
     selected_month = month_var.get()
     budget_entry.delete(0, 'end')
-    budget_entry.insert(0, budgets[selected_month])
+    # Check if the selected month exists in the budgets dictionary
+    if selected_month in budgets:
+        budget_entry.insert(0, budgets[selected_month])
+    else:
+        # If the selected month doesn't have a budget set, display 0 as the default value
+        budget_entry.insert(0, 0)
 
 def delete():
     global expenses_data
-    selected_item = esp_lbl.selection()[0]
-    index = int(selected_item[1:]) - 1
-    expenses_data.drop(index, inplace=True)
-    esp_lbl.delete(selected_item)
-    expenses_data.to_csv(expenses_filename, index=False)  # Save data to CSV after deletion
+    selected_items = esp_lbl.selection()
+    if selected_items:
+        selected_item = selected_items[0]  # Assuming only one item is selected
+        index = esp_lbl.index(selected_item)
+        expenses_data.drop(index, inplace=True)
+        esp_lbl.delete(selected_item)
+        expenses_data.to_csv(expenses_filename, index=False)  # Save data to CSV after deletion
+    else:
+        messagebox.showwarning("No Selection", "Please select an item to delete.")
+
 
 def analyze_data():
     # Get the selected month
@@ -164,6 +188,7 @@ display_lbl.pack(pady=(30, 5))
 esp_lbl = ttk.Treeview(right_frame, columns=('Month', 'Category', 'Item', 'Quantity', 'Cost Per Unit', 'Total'), show='headings', height=1)
 esp_lbl.pack(pady=5, padx=20)
 
+add_vertical_scrollbar(esp_lbl) 
 esp_lbl.column('Month', width=100, anchor='center')
 esp_lbl.column('Category', width=100, anchor='center')
 esp_lbl.column('Item', width=150, anchor='center')
